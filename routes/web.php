@@ -13,6 +13,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
+
+//Route::view('/jogos', 'jogos');
+
+//Route::view('/jogos', 'jogos', ['name' =>'GTA']);
+
+//Receber Apenas Texto
+//Route::get('/jogos/{name?}', function($name = null){
+//    return view('jogos', ['nomeJogo' => $name]);
+//})->where('name', '[A-Za-z]+');
+
+Route::get('/jogos/{idJogo?}/{name?}', function($idJogo = null, $name = null){
+    return view('jogos', ['idJogo' => $idJogo, 'nomeJogo' => $name]);
+})->where(['idJogo' => '[0-9]+', 'name' => '[a-z]+']);
